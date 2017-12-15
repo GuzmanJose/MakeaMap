@@ -5,13 +5,20 @@ using cakeslice;
 
 public class ElementScript1 : MonoBehaviour {
 
+
 	private Vector3 cursorPos;
+    private GameObject erase;
+    private float eraseDistance;
+
 	public bool mouseOn = false;
+    public GameObject eraseButton;
 
 
 	// Use this for initialization
 	void Start () {
-		
+    erase = Instantiate(eraseButton, new Vector3(transform.position.x + eraseDistance, transform.position.y + eraseDistance, transform.position.z), Quaternion.identity );
+    erase.transform.parent = this.transform;
+
 
 	}
 	
@@ -27,27 +34,48 @@ public class ElementScript1 : MonoBehaviour {
 			mouseOn = false;
 
 		}
+        if (Input.GetMouseButtonDown(0) && !mouseOn) {
+            SelectOff();
+        }
 
+        if (Input.touchCount == 2) {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
 
-	}
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            float deltaMagnitude = prevTouchDeltaMag - touchDeltaMag;
+
+            this.transform.localScale += new Vector3(deltaMagnitude, deltaMagnitude, 0f);
+        }
+
+        eraseDistance = GetComponent<BoxCollider2D>().size.x * 3;
+
+    }
 		
 	void OnMouseOver () {
 		if (Input.GetMouseButtonDown (0)) {
-			GetComponent <Outline> ().enabled = true;
 			mouseOn = true;
 			SelectOn ();
-		} 
-			
+		} 			
 	}
 
-	void OnMouseExit () {
-		GetComponent <Outline> ().enabled = false;
-	}
-		
 	void SelectOn () {
-		//add x sprite
+        GetComponent<Outline>().enabled = true;
+        erase.SetActive(true);
+    }
+    
+    void SelectOff() {
+        GetComponent<Outline>().enabled = false;
+        erase.SetActive(false);
+    }
 
-	}
-
+    public void EraseElement() {
+        Destroy(gameObject);
+    }
 
 }

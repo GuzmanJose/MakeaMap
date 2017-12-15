@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOn: 0
+  eraseButton: {fileID: 1139029851556840, guid: 6ce9f91417c2ff349a75526bc55b8196,
+    type: 2}
 --- !u!114 &114672126401918148
 MonoBehaviour:
   m_ObjectHideFlags: 1
