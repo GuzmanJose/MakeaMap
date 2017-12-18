@@ -18,9 +18,19 @@ public class UiSliderScr : MonoBehaviour {
 			elements = Resources.LoadAll ("Elements", typeof(GameObject)).Cast<GameObject>().ToArray();
 			buttonImages = Resources.LoadAll ("ButtonImages", typeof(Sprite)).Cast<Sprite>().ToArray();
 			for (int i = 0; i < elements.Length; i++) {
-				GameObject cloneButton = Instantiate (buttonElement, new Vector3(1 + (elements[i].GetComponent <BoxCollider2D>().size.x * 10) * i, 1f, 85f), Quaternion.identity);
+				GameObject cloneButton = Instantiate (buttonElement, new Vector3(1 + (elements[i].GetComponent <BoxCollider2D>().size.x * 11) * i, 1f, 85f), Quaternion.identity);
 				cloneButton.GetComponent<ButtonElementScript>().stamp = elements[i];
 				cloneButton.GetComponent <ButtonElementScript>().buttonImage = buttonImages[i];
+				if (elements[i].tag == "element") {
+					cloneButton.tag = "element";
+				}
+				else if (elements[i].tag == "Draw") {
+					cloneButton.tag = "Draw";
+				}
+				else if (elements[i].tag == "Erase") {
+					cloneButton.tag = "Erase";
+				}
+
 			}
 		}
 

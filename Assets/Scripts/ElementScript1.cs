@@ -16,10 +16,7 @@ public class ElementScript1 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-    erase = Instantiate(eraseButton, new Vector3(transform.position.x + eraseDistance, transform.position.y + eraseDistance, transform.position.z), Quaternion.identity );
-    erase.transform.parent = this.transform;
-
-
+		EraseButton ();	
 	}
 	
 	// Update is called once per frame
@@ -53,7 +50,7 @@ public class ElementScript1 : MonoBehaviour {
             this.transform.localScale += new Vector3(deltaMagnitude, deltaMagnitude, 0f);
         }
 
-        eraseDistance = GetComponent<BoxCollider2D>().size.x * 3;
+        
 
     }
 		
@@ -74,8 +71,16 @@ public class ElementScript1 : MonoBehaviour {
         erase.SetActive(false);
     }
 
-    public void EraseElement() {
+	void EraseButton(){
+		eraseDistance = GetComponent<BoxCollider2D>().size.x * 3;
+		erase = Instantiate(eraseButton, new Vector3(transform.position.x + eraseDistance, transform.position.y + eraseDistance, transform.position.z), Quaternion.identity );
+		erase.transform.parent = this.transform;	
+	}
+
+	public void EraseElement() {
         Destroy(gameObject);
     }
+
+
 
 }

@@ -51,15 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\OutlineEffect\Demo\MaterialSwitcher.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\OutlineAnimation.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\Rotate.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\Toggle.cs" />
      <Compile Include="Assets\OutlineEffect\LinkedSet.cs" />
      <Compile Include="Assets\OutlineEffect\Outline.cs" />
      <Compile Include="Assets\OutlineEffect\OutlineEffect.cs" />
      <Compile Include="Assets\Scripts\ButtonElementScript.cs" />
      <Compile Include="Assets\Scripts\ElementScript1.cs" />
+     <Compile Include="Assets\Scripts\eraseButton.cs" />
+     <Compile Include="Assets\Scripts\FreeDrawSC.cs" />
+     <Compile Include="Assets\Scripts\Lines.cs" />
      <Compile Include="Assets\Scripts\MenuStart.cs" />
      <Compile Include="Assets\Scripts\TakePhoto.cs" />
      <Compile Include="Assets\Scripts\UiSliderScr.cs" />

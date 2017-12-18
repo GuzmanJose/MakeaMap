@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - element
+  - Draw
+  - Erase
+  - Line
   layers:
   - Default
   - TransparentFX
