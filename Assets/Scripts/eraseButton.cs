@@ -15,6 +15,12 @@ public class eraseButton : MonoBehaviour {
 	}
 
     private void OnMouseDown() {
-        transform.parent.GetComponent<ElementScript1>().EraseElement();
+		if (transform.parent.tag == "element") {
+			transform.parent.GetComponent<ElementScript1>().EraseElement();		
+		}
+		else if (transform.parent.tag == "Write") {
+			transform.parent.GetComponent<TextElementSC>().EraseElement();
+		}
+      
     }
 }

@@ -30,6 +30,9 @@ public class UiSliderScr : MonoBehaviour {
 				else if (elements[i].tag == "Erase") {
 					cloneButton.tag = "Erase";
 				}
+				else if (elements[i].tag == "Write") {
+					cloneButton.tag = "Write";
+				}
 
 			}
 		}

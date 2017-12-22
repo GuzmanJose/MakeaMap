@@ -8,6 +8,7 @@ TagManager:
   - Draw
   - Erase
   - Line
+  - Write
   layers:
   - Default
   - TransparentFX
