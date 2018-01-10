@@ -21,6 +21,7 @@ public class UiSliderScr : MonoBehaviour {
 				GameObject cloneButton = Instantiate (buttonElement, new Vector3(1 + (elements[i].GetComponent <BoxCollider2D>().size.x * 11) * i, 1f, 85f), Quaternion.identity);
 				cloneButton.GetComponent<ButtonElementScript>().stamp = elements[i];
 				cloneButton.GetComponent <ButtonElementScript>().buttonImage = buttonImages[i];
+				cloneButton.transform.SetParent (this.transform);
 				if (elements[i].tag == "element") {
 					cloneButton.tag = "element";
 				}

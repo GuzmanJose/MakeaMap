@@ -58,10 +58,13 @@
      <Compile Include="Assets\Scripts\ElementScript1.cs" />
      <Compile Include="Assets\Scripts\eraseButton.cs" />
      <Compile Include="Assets\Scripts\FreeDrawSC.cs" />
+     <Compile Include="Assets\Scripts\Mail.cs" />
      <Compile Include="Assets\Scripts\MenuStart.cs" />
      <Compile Include="Assets\Scripts\TakePhoto.cs" />
      <Compile Include="Assets\Scripts\TextElementSC.cs" />
      <Compile Include="Assets\Scripts\UiSliderScr.cs" />
+     <Compile Include="Assets\Scripts\WebCamera.cs" />
+     <Compile Include="Assets\Scripts\WebCameraDisplay.cs" />
      <Compile Include="Assets\Scripts\WriteManageSC.cs" />
      <None Include="Assets\OutlineEffect\Resources\OutlineShader.shader" />
      <None Include="Assets\OutlineEffect\Resources\OutlineBufferShader.shader" />
