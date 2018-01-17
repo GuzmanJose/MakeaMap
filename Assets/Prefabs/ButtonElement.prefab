@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stamp: {fileID: 0}
   buttonImage: {fileID: 0}
+  mask: {fileID: 1155726661021698, guid: f72ef50f2b83f4784a0c59910782f52a, type: 2}
 --- !u!212 &212302179950509154
 SpriteRenderer:
   m_ObjectHideFlags: 1

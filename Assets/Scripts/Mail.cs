@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Security;
@@ -52,8 +53,15 @@ public class Mail : MonoBehaviour {
 		};
 		smtpServer.Send (mail);
 		error.text = "Mail sent succesfully";
-
+		StartCoroutine (NextLevel());
 	}
+
+
+	public IEnumerator NextLevel() {
+		yield return new WaitForSeconds (1.0f); 
+		SceneManager.LoadScene ("Video");
+	}
+
 
 
 }

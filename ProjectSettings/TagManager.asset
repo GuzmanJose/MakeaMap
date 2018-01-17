@@ -9,6 +9,8 @@ TagManager:
   - Erase
   - Line
   - Write
+  - Islands
+  - GoBack
   layers:
   - Default
   - TransparentFX

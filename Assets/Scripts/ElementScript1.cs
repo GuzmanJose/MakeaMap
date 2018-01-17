@@ -72,8 +72,9 @@ public class ElementScript1 : MonoBehaviour {
     }
 
 	void EraseButton(){
-		eraseDistance = GetComponent<BoxCollider2D>().size.x * 3;
-		erase = Instantiate(eraseButton, new Vector3(transform.position.x + eraseDistance, transform.position.y + eraseDistance, transform.position.z), Quaternion.identity );
+		eraseDistance = GetComponent<BoxCollider2D>().size.x;
+		float edisty = GetComponent<BoxCollider2D> ().size.y;
+		erase = Instantiate(eraseButton, new Vector3(transform.position.x + eraseDistance/2 + .1f, transform.position.y + edisty/2 + .1f, transform.position.z), Quaternion.identity );
 		erase.transform.parent = this.transform;	
 	}
 

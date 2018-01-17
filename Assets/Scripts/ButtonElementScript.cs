@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonElementScript : MonoBehaviour {
 
@@ -10,10 +11,16 @@ public class ButtonElementScript : MonoBehaviour {
 	private GameObject write;
 	private GameObject draw;
 	private SpriteRenderer spriteRen;
+	private GameObject mainSlider;
+	private GameObject subSlider;
+	private GameObject scroller;
 
 	void Awake () {
+		scroller = GameObject.Find ("Scroller");
 		draw = GameObject.Find ("FreeDrawManager");
 		write = GameObject.Find ("WriteManager");
+		subSlider = GameObject.Find ("IslandSlider");
+		mainSlider = GameObject.Find ("UiSliderMain");
 	}
 
 	// Use this for initialization
@@ -22,6 +29,9 @@ public class ButtonElementScript : MonoBehaviour {
 		spriteRen.sprite = buttonImage;
 		write.SetActive (false);
 		draw.SetActive (false);
+		//subSlider.SetActive (false);
+		subSlider.transform.position = new Vector3 (subSlider.transform.position.x, -2f, subSlider.transform.position.z);
+		scroller.GetComponent <ScrollRect>().horizontal = false;
 	}
 	
 	// Update is called once per frame
@@ -33,10 +43,23 @@ public class ButtonElementScript : MonoBehaviour {
 			GameObject cloneElement = Instantiate (stamp, this.transform.position, Quaternion.identity);
 			cloneElement.GetComponent <ElementScript1>().mouseOn = true;
 		}
+		if (Input.GetMouseButtonDown (0) && this.gameObject.tag == "Islands") {
+			mainSlider.transform.position = new Vector3 (mainSlider.transform.position.x, -2f, mainSlider.transform.position.z);
+			subSlider.transform.position = new Vector3 (subSlider.transform.position.x, 0f, subSlider.transform.position.z);
+			scroller.GetComponent <ScrollRect>().horizontal = true;
+
+		}
+		if (Input.GetMouseButtonDown (0) && this.gameObject.tag == "GoBack") {
+			mainSlider.transform.position = new Vector3 (mainSlider.transform.position.x, 0f, mainSlider.transform.position.z);
+			subSlider.transform.position = new Vector3 (subSlider.transform.position.x, -2f, subSlider.transform.position.z);
+			scroller.GetComponent <ScrollRect>().horizontal = false;
+		}
 		if (Input.GetMouseButtonDown (0) && this.gameObject.tag == "Draw" && !draw.activeSelf) {
 			draw.SetActive (true);
+			// Change the Icon in the button
 		} else if (Input.GetMouseButtonDown (0) && this.gameObject.tag == "Draw" && draw.activeSelf) {
 			draw.SetActive (false);
+			// Change back to the previous icon
 		}
 		if (Input.GetMouseButtonDown (0) && this.gameObject.tag == "Erase") {
 			GameObject[] lines;

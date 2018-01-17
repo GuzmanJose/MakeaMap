@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine.XR.WSA.WebCam;
+using UnityEngine.SceneManagement;
 
 public class WebCamera : MonoBehaviour
 {
@@ -87,5 +88,6 @@ public class WebCamera : MonoBehaviour
 	{
 		Debug.Log("Stopped Recording Video!");
 		m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
+		SceneManager.LoadScene ("End");
 	}
 }

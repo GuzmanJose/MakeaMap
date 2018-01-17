@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TakePhoto : MonoBehaviour {
 
 	GameObject uiSlider;
+	GameObject subSlider;
 	GameObject photoButton;
 	private GameObject wizard;
 	private GameObject draw;
+	private GameObject scroller;
 	private int screenTaken;
 
 
 
 	void Awake () {
+		scroller = GameObject.Find ("Scroller");
 		draw = GameObject.Find ("FreeDrawManager");
 		wizard = GameObject.Find ("Wizard");
-		uiSlider = GameObject.Find ("UiSlider");
-		photoButton = GameObject.Find ("PhotoButton");
+		subSlider = GameObject.Find ("IslandSlider");
+		uiSlider = GameObject.Find ("UiSliderMain");
+		photoButton = GameObject.Find ("Next");
 	}
 
 	// Use this for initialization
@@ -28,11 +33,12 @@ public class TakePhoto : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public void CleanUI () {
 		uiSlider.SetActive (false);
+		subSlider.SetActive (false);
 		photoButton.SetActive (false);
 		draw.SetActive (false);
 		ScreenCapture.CaptureScreenshot ("Assets/ScreenPics/MapPic.png");
@@ -44,6 +50,7 @@ public class TakePhoto : MonoBehaviour {
 	}
 
 	public void NotYet() {
+		subSlider.SetActive (true);
 		uiSlider.SetActive (true);
 		photoButton.SetActive (true);
 		wizard.SetActive (false);

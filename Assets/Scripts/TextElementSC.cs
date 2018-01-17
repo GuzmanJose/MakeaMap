@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 public class TextElementSC : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
@@ -9,27 +10,28 @@ public class TextElementSC : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	private Vector3 cursorPos;
 	private GameObject erase;
 	private bool pointerOn;
+	private bool mouseOn = false;
+	private float rectX;
+	private float rectY;
 
-
-	public bool mouseOn = false;
 	public GameObject eraseButton;
 
 
 
 	// Use this for initialization
 	void Start () {
-		EraseButton ();	
+		EraseButton ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButton (0) && pointerOn) {  
+		if (Input.GetMouseButtonDown (0) && pointerOn) {  
 			if (EventSystem.current.IsPointerOverGameObject() && gameObject.tag == "Write") { 
 				mouseOn = true;
 				SelectOn();
 			}
 		}
-		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && !pointerOn) {  
+		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved && !pointerOn) {   
 			if (EventSystem.current.IsPointerOverGameObject (Input.GetTouch(0).fingerId) && gameObject.tag == "Write") { 
 				mouseOn = true;	
 				SelectOn(); 
@@ -90,7 +92,7 @@ public class TextElementSC : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	}
 
 	void EraseButton(){
-		erase = Instantiate(eraseButton, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity );
+		erase = Instantiate(eraseButton, new Vector3(transform.position.x - 1.3f, transform.position.y + .5f, transform.position.z), Quaternion.identity );
 		erase.transform.parent = this.transform;	
 	}
 
