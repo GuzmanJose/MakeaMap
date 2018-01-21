@@ -9,25 +9,23 @@ public class TakePhoto : MonoBehaviour {
 	GameObject uiSlider;
 	GameObject subSlider;
 	GameObject photoButton;
+	GameObject stampSlider;
 	private GameObject wizard;
 	private GameObject draw;
-	private GameObject scroller;
-	private int screenTaken;
-
-
+	private GameObject scrollers;
 
 	void Awake () {
-		scroller = GameObject.Find ("Scroller");
+		scrollers = GameObject.Find ("SCROLLS");
 		draw = GameObject.Find ("FreeDrawManager");
 		wizard = GameObject.Find ("Wizard");
 		subSlider = GameObject.Find ("IslandSlider");
 		uiSlider = GameObject.Find ("UiSliderMain");
+		stampSlider = GameObject.Find ("StampSlider");
 		photoButton = GameObject.Find ("Next");
 	}
 
 	// Use this for initialization
 	void Start () {
-		screenTaken = 1;
 		wizard.SetActive (false);
 	}
 
@@ -37,11 +35,14 @@ public class TakePhoto : MonoBehaviour {
 	}
 
 	public void CleanUI () {
+		GameControl.control.roundNumber++;
 		uiSlider.SetActive (false);
 		subSlider.SetActive (false);
+		stampSlider.SetActive (false);
 		photoButton.SetActive (false);
+		scrollers.SetActive (false);
 		draw.SetActive (false);
-		ScreenCapture.CaptureScreenshot ("Assets/ScreenPics/MapPic.png");
+		ScreenCapture.CaptureScreenshot ("Assets/ScreenPics/" + GameControl.control.roundNumber + "MapPic.png");
 		StartCoroutine (Wizard ());
 	}
 
@@ -51,8 +52,10 @@ public class TakePhoto : MonoBehaviour {
 
 	public void NotYet() {
 		subSlider.SetActive (true);
+		stampSlider.SetActive (true);
 		uiSlider.SetActive (true);
 		photoButton.SetActive (true);
+		scrollers.SetActive (true);
 		wizard.SetActive (false);
 	}
 

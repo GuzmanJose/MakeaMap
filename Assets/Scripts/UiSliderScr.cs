@@ -25,6 +25,9 @@ public class UiSliderScr : MonoBehaviour {
 				if (elements[i].tag == "Islands") {
 					cloneButton.tag = "Islands";
 				}
+				else if (elements[i].tag == "Stamps") {
+					cloneButton.tag = "Stamps";
+				}
 				else if (elements[i].tag == "Draw") {
 					cloneButton.tag = "Draw";
 				}

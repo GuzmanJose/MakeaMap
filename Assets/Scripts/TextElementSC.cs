@@ -13,6 +13,8 @@ public class TextElementSC : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	private bool mouseOn = false;
 	private float rectX;
 	private float rectY;
+	private GameObject buttonElem;
+	private GameObject wButtonElem;
 
 	public GameObject eraseButton;
 
@@ -21,11 +23,13 @@ public class TextElementSC : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	// Use this for initialization
 	void Start () {
 		EraseButton ();
+		buttonElem = GameObject.FindGameObjectWithTag ("Draw");
+		wButtonElem = GameObject.FindGameObjectWithTag ("Write");
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0) && pointerOn) {  
+		if (Input.GetMouseButtonDown (0) && pointerOn && buttonElem.GetComponent<ButtonElementScript> ().drawOn == false && wButtonElem.GetComponent <ButtonElementScript>().textOn == false) {  
 			if (EventSystem.current.IsPointerOverGameObject() && gameObject.tag == "Write") { 
 				mouseOn = true;
 				SelectOn();

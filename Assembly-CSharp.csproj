@@ -58,9 +58,11 @@
      <Compile Include="Assets\Scripts\ElementScript1.cs" />
      <Compile Include="Assets\Scripts\eraseButton.cs" />
      <Compile Include="Assets\Scripts\FreeDrawSC.cs" />
+     <Compile Include="Assets\Scripts\GameControl.cs" />
      <Compile Include="Assets\Scripts\Mail.cs" />
      <Compile Include="Assets\Scripts\MenuStart.cs" />
      <Compile Include="Assets\Scripts\NextScene.cs" />
+     <Compile Include="Assets\Scripts\StampSliderSC.cs" />
      <Compile Include="Assets\Scripts\SubSlider.cs" />
      <Compile Include="Assets\Scripts\TakePhoto.cs" />
      <Compile Include="Assets\Scripts\TextElementSC.cs" />

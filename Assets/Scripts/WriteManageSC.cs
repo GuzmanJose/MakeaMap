@@ -8,8 +8,12 @@ public class WriteManageSC : MonoBehaviour {
 
 	public InputField input;
 	public Text textBox;
-	private Text textClone;
 	public Canvas myCanvas;
+
+	private Text textClone;
+	private GameObject wButtonElem;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +30,8 @@ public class WriteManageSC : MonoBehaviour {
 		textClone.text = input.text;
 		input.text = "";
 		this.gameObject.SetActive (false);
-
+		wButtonElem = GameObject.FindGameObjectWithTag ("Write");
+		wButtonElem.GetComponent <ButtonElementScript> ().textOn = false;
 	} 
 
 

@@ -14,7 +14,7 @@ public class WebCamera : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		StartVideoCaptureTest();
+
 	}
 
 	void Update()
@@ -30,7 +30,7 @@ public class WebCamera : MonoBehaviour
 		}
 	}
 
-	void StartVideoCaptureTest()
+	public void StartVideoCaptureTest()
 	{
 		Resolution cameraResolution = VideoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).FirstOrDefault ();
 		Debug.Log(cameraResolution);
@@ -67,7 +67,7 @@ public class WebCamera : MonoBehaviour
 	{
 		Debug.Log("Started Video Capture Mode!");
 		string timeStamp = Time.time.ToString().Replace(".", "").Replace(":", "");
-		string filename = string.Format("TestVideo_{0}.mp4", timeStamp);
+		string filename = string.Format("Video"+ GameControl.control.roundNumber +".mp4", timeStamp);
 		string filepath = System.IO.Path.Combine(Application.persistentDataPath, filename);
 		filepath = filepath.Replace("/", @"\");
 		m_VideoCapture.StartRecordingAsync(filepath, OnStartedRecordingVideo);
@@ -88,6 +88,12 @@ public class WebCamera : MonoBehaviour
 	{
 		Debug.Log("Stopped Recording Video!");
 		m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
-		SceneManager.LoadScene ("End");
+
+		TheEnd ();
+
+	}
+
+	public void TheEnd() {
+		SceneManager.LoadScene ("End");	
 	}
 }

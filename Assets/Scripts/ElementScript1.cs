@@ -9,6 +9,8 @@ public class ElementScript1 : MonoBehaviour {
 	private Vector3 cursorPos;
     private GameObject erase;
     private float eraseDistance;
+	private GameObject buttonElem;
+	private GameObject wButtonElem;
 
 	public bool mouseOn = false;
     public GameObject eraseButton;
@@ -17,6 +19,8 @@ public class ElementScript1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		EraseButton ();	
+		buttonElem = GameObject.FindGameObjectWithTag ("Draw");
+		wButtonElem = GameObject.FindGameObjectWithTag ("Write");
 	}
 	
 	// Update is called once per frame
@@ -50,12 +54,10 @@ public class ElementScript1 : MonoBehaviour {
             this.transform.localScale += new Vector3(deltaMagnitude, deltaMagnitude, 0f);
         }
 
-        
-
     }
 		
 	void OnMouseOver () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && buttonElem.GetComponent<ButtonElementScript> ().drawOn == false && wButtonElem.GetComponent <ButtonElementScript>().textOn == false) {
 			mouseOn = true;
 			SelectOn ();
 		} 			

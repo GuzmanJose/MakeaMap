@@ -7,6 +7,7 @@ public class NextScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GameControl.control.Save ();
 		StartCoroutine (NextScene1());
 	}
 	

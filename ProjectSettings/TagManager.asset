@@ -11,6 +11,7 @@ TagManager:
   - Write
   - Islands
   - GoBack
+  - Stamps
   layers:
   - Default
   - TransparentFX

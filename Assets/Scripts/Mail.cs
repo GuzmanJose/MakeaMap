@@ -41,7 +41,7 @@ public class Mail : MonoBehaviour {
 		mail.Body = "Hi " + nameUser.text + ", in this email you will find attached the map you created in Make a Map.\nHave a great day.\nBest,\nMake a Map Developer"; //Change this!!
 
 
-		Attachment attachment = new Attachment ("Assets/ScreenPics/MapPic.png");
+		Attachment attachment = new Attachment ("Assets/ScreenPics/" + GameControl.control.roundNumber + "MapPic.png");
 		mail.Attachments.Add (attachment);
 
 		SmtpClient	smtpServer = new SmtpClient ("smtp.gmail.com");
